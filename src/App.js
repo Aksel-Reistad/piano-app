@@ -1,37 +1,36 @@
-import logo from './logo.svg';
-import {NoteNavn} from './JsKode.js/NoteListe';
-import { useState } from 'react';
-import NoteutTreker from './JsKode.js/NoteVelger';
-import Meny from './JsKode.js/Meny';
+import React, { useState } from 'react';
+import { NoteNavn } from './JsKode/NoteListe'; // Importerer listen med noter
 import './App.css';
 
 function App() {
-  const [noter, setUsers] = useState(NoteNavn)
-  const [utvalgte, setWinner] = useState([]);
+  const [noter, setNoter] = useState(NoteNavn); // Bruker NoteNavn som initialverdi
+  const [utvalgte, setUtvalgte] = useState([]); // Holder oversikt over valgte noter
 
-  const [uiProps,setUiProps] = useState({
-    buttonDisabeld: false
-  });
-
-//handelers
-  const VelgNote=()=>{
-    console.log("ord");
-  }
+  // Funksjon for å velge en tilfeldig note
+  const velgNote = () => {
+    console.log("forsåk på å velge en note");
+    const tilfeldigNote = noter[Math.floor(Math.random() * noter.length)];
+    setUtvalgte((prevUtvalgte) => [...prevUtvalgte, tilfeldigNote]); // Legger til den nye noten
+  };
 
   return (
     <div>
+      <button onClick={velgNote}>
+        Velg tilfeldig note
+      </button>
 
-    <button onClick={VelgNote}> Velg tilfeldig note</button>
-
-    <ul className= "winners">
-      {NoteNavn.map((valkt, index)=> (
-      <li key={index} className="list-item">
-        {valkt}
-      </li>
-      
-    ))}
-    </ul>
-
+      <ul className="winners">
+        {utvalgte.map((note, index) => (
+           <li key={index} className="list-item">
+           {/* <p>{note.NoteBokstav}</p> */}
+           <img 
+             src={note.bilde} 
+            //  alt={note.NoteBokstav} 
+             style={{ width: "20vh", height: "20vh" }} 
+           />
+         </li>
+        ))}
+      </ul>
     </div>
   );
 }

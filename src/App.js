@@ -7,28 +7,35 @@ function App() {
   const [utvalgte, setUtvalgte] = useState([]); // Holder oversikt over valgte noter
 
   // Funksjon for å velge en tilfeldig note
-  const velgNote = () => {
-    console.log("forsåk på å velge en note");
+  const VelgNote = () => {
+    console.log("Forsøk på å velge en note");
+    if (noter.length === 0) {
+      alert("Ingen flere noter igjen!");
+      return;
+    }
     const tilfeldigNote = noter[Math.floor(Math.random() * noter.length)];
     setUtvalgte((prevUtvalgte) => [...prevUtvalgte, tilfeldigNote]); // Legger til den nye noten
+    const oppdatertListe = noter.filter((note) => note !== tilfeldigNote); // Fjerner valgt note fra listen
+    setNoter(oppdatertListe);
   };
 
   return (
     <div>
-      <button onClick={velgNote}>
+      <button onClick={VelgNote}>
         Velg tilfeldig note
       </button>
 
+      {/* Viser listen over valgte noter */}
       <ul className="winners">
         {utvalgte.map((note, index) => (
-           <li key={index} className="list-item">
-           {/* <p>{note.NoteBokstav}</p> */}
-           <img 
-             src={note.bilde} 
-            //  alt={note.NoteBokstav} 
-             style={{ width: "20vh", height: "20vh" }} 
-           />
-         </li>
+          <li key={index} className="list-item">
+            {/* <p>{note.NoteBokstav}</p> */}
+            <img
+              src={note.bilde}
+              alt={note.NoteBokstav || "Note"}
+              style={{ width: "20vh", height: "20vh" }}
+            />
+          </li>
         ))}
       </ul>
     </div>

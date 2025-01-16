@@ -1,4 +1,10 @@
-export const NoteNavn= [
+import React, { useState } from "react";
+
+
+const NoteListe = () => {
+
+
+    const [notes, setNotes] = useState([
     { NoteBokstav: "c1", bilde: "/Bilder/C1-note.png" },
     { NoteBokstav: "d1", bilde: "/Bilder/D1-note.png" },
     { NoteBokstav: "e1", bilde: "/Bilder/E1-note.png" },
@@ -25,4 +31,35 @@ export const NoteNavn= [
 
     { NoteBokstav: "c4", bilde: "/Bilder/C4-note.png" },
     { NoteBokstav: "g4", bilde: "/Bilder/G4-note.png" },
-];
+]);
+
+const toggleNoteStatus = (noteBokstav) => {
+    setNotes(prevNotes =>
+        prevNotes.map(note =>
+            note.NoteBokstav === noteBokstav
+                ? { ...note, aktiv: !note.aktiv } // Bytt status
+                : note
+        )
+    );
+};
+
+return (
+    <div>
+        <h1>NoteBlokker</h1>
+        <ul>
+            {notes.map(note => (
+                <li key={note.NoteBokstav}>
+                    <img src={note.bilde} alt={note.NoteBokstav} width={50} />
+                    <span>{note.NoteBokstav}</span>
+                    <button onClick={() => toggleNoteStatus(note.NoteBokstav)}>
+                        {note.aktiv ? "Blokker" : "Avblokker"}
+                    </button>
+                </li>
+            ))}
+        </ul>
+    </div>
+);
+};
+
+
+export default NoteListe;

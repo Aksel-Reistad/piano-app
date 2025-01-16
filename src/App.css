@@ -21,6 +21,17 @@ App.css
   }
 }
 
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: #f4f4f4; */
+  padding: 20px 40px;
+  border-bottom: 1px solid #e0e0e0;
+  font-family: Arial, sans-serif;
+}
+
+
 .App-header {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;

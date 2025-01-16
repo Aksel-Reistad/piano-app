@@ -3,7 +3,7 @@ import React from "react";
 function NoteVelger({ SyneligBokstaver }) {
   return (
     <div>
-      {/* <button onClick={SyneligBokstaver}>Knap</button> */}
+      <button onClick={SyneligBokstaver}>Toggle bokstaver</button>
     </div>
   );
 }

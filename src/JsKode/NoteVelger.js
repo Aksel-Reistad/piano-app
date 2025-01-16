@@ -1,17 +1,11 @@
 import React from "react";
 
+function NoteVelger({ SyneligBokstaver }) {
+  return (
+    <div>
+      {/* <button onClick={SyneligBokstaver}>Knap</button> */}
+    </div>
+  );
+}
 
-function NoteutTreker(){
-    return(
-        <div>
-
-
-
-        
-        
-        </div>
-    );
-};
-
-
-export default NoteutTreker;
+export default NoteVelger;

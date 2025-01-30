@@ -1,21 +1,31 @@
 import React, { useState } from "react";
-import NoteListe from "./NoteListe";
+import { NoteNavn } from "./NoteListe"; // Importerer listen med noter
 import "../App.css";
 
 function NoteFiner({ Bokstaver }) {
-  const [noter, setNoter] = useState(NoteListe); // NoteListe
+  const [noter, setNoter] = useState(NoteNavn); // Noteliste
   const [utvalgte, setUtvalgte] = useState([]); // Valgte noter
+  const [Ekstra, setEkstra] = useState([]) //FerdigNote
 
   const VelgNote = () => {
+    console.log("Forsøk på å velge en note");
     if (noter.length === 0) {
       alert("Ingen flere noter igjen!");
       return;
     }
-    const tilfeldigNote = noter[Math.floor(Math.random() * noter.length)];
 
-    // Oppdaterer state for valgte noter og gjenværende noter
-    setUtvalgte((prevUtvalgte) => [...prevUtvalgte, tilfeldigNote]);
+    const tilfeldigNote = noter[Math.floor(Math.random() * noter.length)];
+    console.log(tilfeldigNote);
+    // Oppdaterer state for valgte noter til den tilfeldigNote
+    setUtvalgte(() => [ tilfeldigNote]);
+    //alle tidliger noter
+    setEkstra((prevEkstra) => [...prevEkstra, tilfeldigNote]);
+    //fjerner tilfeldignote fra listen 
     setNoter((prevNoter) => prevNoter.filter((note) => note !== tilfeldigNote));
+    // console.log(tilfeldigNote);
+    console.log(noter)
+    console.log(Ekstra);
+    console.log(utvalgte);
   };
 
   return (

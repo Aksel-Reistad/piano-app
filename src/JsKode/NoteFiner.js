@@ -16,7 +16,7 @@ function NoteFiner({ Bokstaver }) {
 
     const tilfeldigNote = noter[Math.floor(Math.random() * noter.length)];
     console.log(tilfeldigNote);
-    // Oppdaterer state for valgte noter til den tilfeldigNote
+    // Oppdaterer utvalkt til den tilfeldigNote
     setUtvalgte(() => [ tilfeldigNote]);
     //alle tidliger noter
     setEkstra((prevEkstra) => [...prevEkstra, tilfeldigNote]);

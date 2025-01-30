@@ -1,17 +1,34 @@
+import '../App.css';
 
-// function NoteSjekk(){
-// // Oppdaterer state for valgte noter og gjenværende noter
-// setUtvalgte((prevUtvalgte) => [...prevUtvalgte, tilfeldigNote]);
-// setNoter((prevNoter) => prevNoter.filter((note) => note !== tilfeldigNote));
-// return(
-// <div>
-// {/* <button on onClick={sjekk}>tekst</button> */}
+function NoteSjekk(){
+    const tekst = document.querySelector('[contenteditable="true"]').innerText;
+
+const sjekk = () => {
+
+    if (tekst === tilfeldigNote){
+        alert("riktg");
+        }
+        else{
+            alert("feil");
+
+        }
+    }
+
+
+}
+return(
+<div>
+<button on onClick={sjekk}>test Svar</button>
+
+<div contentEditable="true">
+    <p>her svare du </p>
+
+</div>
+
+</div>
+);
 
 
 
-// </div>
-// );
-
-
-// }
-// export default NoteSjekk;
+}
+export default NoteSjekk;

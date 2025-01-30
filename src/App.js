@@ -21,7 +21,7 @@ function App() {
         
         {/* NoteFiner-komponenten med tilgang til Bokstaver */}
         <NoteFiner Bokstaver={Bokstaver} />
-      {/* <NoteSjekk/> */}
+      <NoteSjekk/>
       </div>
 
     );
